@@ -3,24 +3,39 @@ const fs = require ('fs');
 inquirer.prompt ([
     {
         type: 'input',
-      message: "What is the employee's name?",
-      name: 'name',
+      message: "What is the Managers's name?",
+      name: 'managerName',
     },
     {
-        type: 'list',
-      message: "What is the employee's role?",
-      name: 'role',
-      choices: ['Employee', 'Manager', 'Engineer','Intern']
+        type: 'input',
+      message: "What is the Manager's employee ID?",
+      name: 'managerId',
+    },
+    {
+        type: 'input',
+      message: "What is the Manager's email?",
+      name: 'managerEmail',
     },
     {
         type: 'input',
       message: "What is the Manager's office number?",
       name: 'officeNumber',
-      when: (answers) => { 
-        if(answers.role === 'Manager'){
-            return true;
+    },
+    {
+        type: 'confirm',
+      message: 'Do you have more employees to add?',
+      name: 'confirm',
+    },
+    {
+        type: 'list',
+      message: "What is the employee's role?",
+      name: 'role',
+      choices: ['Engineer','Intern'],
+      when: (answers) => {
+        if(answers.confirm === 'Y') {
+        return true;
         }
-      }
+    }
     },
     {
         type: 'input',
@@ -41,21 +56,6 @@ inquirer.prompt ([
             return true;
         }
       }
-    },
-    {
-        type: 'input',
-      message: "What is the employee's ID?",
-      name: 'id',
-    },
-    {
-        type: 'input',
-      message: "What is the employee's email?",
-      name: 'email',
-    },
-    {
-        type: 'confirm',
-      message: 'Do you have more employees to add?',
-      name: 'yesNo',
     },
  ])
  .then((data) => {
