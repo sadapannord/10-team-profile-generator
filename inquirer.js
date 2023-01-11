@@ -22,9 +22,10 @@ inquirer.prompt ([
       name: 'officeNumber',
     },
     {
-        type: 'confirm',
+        type: 'list',
       message: 'Do you have more employees to add?',
-      name: 'confirm',
+      name: 'yesNo',
+      choices: ["Yes", "No"]
     },
     {
         type: 'list',
@@ -32,10 +33,40 @@ inquirer.prompt ([
       name: 'role',
       choices: ['Engineer','Intern'],
       when: (answers) => {
-        if(answers.confirm === 'Y') {
+        if(answers.yesNo === 'Yes') {
         return true;
         }
     }
+    },
+    {
+        type: 'input',
+      message: "What is the employee's name?",
+      name: 'engineerName',
+      when: (answers) => { 
+        if(answers.role === 'Engineer' || 'Intern'){
+            return true;
+        }
+      }
+    },
+    {
+        type: 'input',
+      message: "What is the employee's ID?",
+      name: 'engineerId',
+      when: (answers) => { 
+        if(answers.role === 'Engineer' || 'Intern'){
+            return true;
+        }
+      }
+    },
+    {
+        type: 'input',
+      message: "What is the employee's email?",
+      name: 'engineerEmail',
+      when: (answers) => { 
+        if(answers.role === 'Engineer' || 'Intern'){
+            return true;
+        }
+      }
     },
     {
         type: 'input',
@@ -49,7 +80,7 @@ inquirer.prompt ([
     },
     {
         type: 'input',
-      message: "What is the Intern's?",
+      message: "What is the Intern's school?",
       name: 'school',
       when: (answers) => { 
         if(answers.role === 'Intern'){
@@ -66,4 +97,3 @@ inquirer.prompt ([
  })
 
 // console.log(answers)
-//add if statement that reasks questions if yesNo is selected Yes
