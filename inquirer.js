@@ -34,37 +34,37 @@ inquirer.prompt ([
       choices: ['Engineer','Intern'],
       when: (answers) => {
         if(answers.yesNo === 'Yes') {
-        return true;
+        // return true;
         }
     }
     },
     {
         type: 'input',
       message: "What is the employee's name?",
-      name: 'engineerName',
+      name: 'employeeName',
       when: (answers) => { 
         if(answers.role === 'Engineer' || 'Intern'){
-            return true;
+            // return true;
         }
       }
     },
     {
         type: 'input',
       message: "What is the employee's ID?",
-      name: 'engineerId',
+      name: 'employeeId',
       when: (answers) => { 
         if(answers.role === 'Engineer' || 'Intern'){
-            return true;
+            // return true;
         }
       }
     },
     {
         type: 'input',
       message: "What is the employee's email?",
-      name: 'engineerEmail',
+      name: 'employeeEmail',
       when: (answers) => { 
         if(answers.role === 'Engineer' || 'Intern'){
-            return true;
+            // return true;
         }
       }
     },
@@ -74,7 +74,7 @@ inquirer.prompt ([
       name: 'gitHub',
       when: (answers) => { 
         if(answers.role === 'Engineer'){
-            return true;
+            // return true;
         }
       }
     },
@@ -84,13 +84,14 @@ inquirer.prompt ([
       name: 'school',
       when: (answers) => { 
         if(answers.role === 'Intern'){
-            return true;
+            // return true;
         }
       }
     },
  ])
  .then((data) => {
     // fs.writeFile()
+    data = JSON.stringify(data)
     fs.writeFile('./output', data, (err) =>//err is just placeholder, put in anything? Happy
   err ? console.error(err) : console.log('Success!')
 );
