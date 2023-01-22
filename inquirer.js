@@ -1,6 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const allEmployees =[];
+const allEmployees = [];
+const index = require('./index.js')
+
+
 const questions = [
     {
         type: 'input',
@@ -82,7 +85,6 @@ const additionalEmployees = [
 function getEmployees() {
     inquirer.prompt(questions).then((answers => {
         allEmployees.push(answers)
-        console.log(allEmployees);
         if (!answers.moreEmployees) {
             return answers;
         } else {
@@ -93,28 +95,27 @@ function getEmployees() {
 }
 
 function getMoreEmployees() {
-    inquirer.prompt(additionalEmployees).then ((answers => {
+    inquirer.prompt(additionalEmployees).then((answers => {
         allEmployees.push(answers);
         console.log(allEmployees);
-        if(answers.moreEmployees=== "No") {
+        if (answers.moreEmployees === "No") {
             return answers;
         } else {
             return getMoreEmployees()
         }
+
     }))
 }
 
 
 getEmployees()
+    //this next part broke my inquirer
+    // .then((allEmployees) => {
+    //     fs.writeFile('./output/index.html', index(allEmployees))
+    // })
 
 
-//  .then((data) => {
-//     console.log(data)
-//     // fs.writeFile()
-//     data = JSON.stringify(data)
-//     fs.writeFile('./output', data, (err) =>//err is just placeholder, put in anything? Happy
-//   err ? console.error(err) : console.log('Success!')
-// );
-//  })
 
-// console.log(answers)
+
+
+
