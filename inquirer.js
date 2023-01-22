@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const allEmployees = [];
 const index = require('./index.js')
-
+const {Manager, Engineer, Intern} = require ('./classes.js')
 
 const questions = [
     {
@@ -84,7 +84,8 @@ const additionalEmployees = [
 
 function getEmployees() {
     inquirer.prompt(questions).then((answers => {
-        allEmployees.push(answers)
+        let manager = new Manager (answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber)
+        allEmployees.push(manager)
         if (!answers.moreEmployees) {
             return answers;
         } else {
@@ -96,10 +97,16 @@ function getEmployees() {
 
 function getMoreEmployees() {
     inquirer.prompt(additionalEmployees).then((answers => {
-        allEmployees.push(answers);
-        console.log(allEmployees);
+        if (answers.role === "Engineer") {
+            let engineer = new Engineer (answers.employeeName, answers.employeeId, answers.employeeEmail, answers.gitHub)
+            allEmployees.push(engineer)
+        }
+        if (answers.role === "Intern") {
+            let intern = new Intern (answers.employeeName, answers.employeeId, answers.employeeEmail,answers.school)
+            allEmployees.push(intern)
+        }
         if (answers.moreEmployees === "No") {
-            return answers;
+            fs.writeFileSync('./output/index.html', index(allEmployees))
         } else {
             return getMoreEmployees()
         }

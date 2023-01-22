@@ -1,35 +1,61 @@
 class Employee {
-    constructor(name, id, email,role) {
+    constructor(name, id, email) {
         this.name = name;
         this.id = id;
         this.email = email;
-        this.role = role;
+    }
+    getName() {
+        return this.name;
+    }
+    getId() {
+        return this.id
+    }
+    getEmail () {
+        return this.email
+    }
+    getRole() {
+        return "Employee"
     }
 }
 
 class Manager extends Employee {
-    constructor(name, id, email, role, officeNumber) {
-        super(name, id, email,role);
+    constructor(name, id, email, officeNumber) {
+        super(name, id, email);
         this.officeNumber = officeNumber;
+    }
+    getOfficeNumber() {
+        return this.officeNumber
+    }
+    getRole() {
+        return "Manager"
     }
 }
 
 class Engineer extends Employee {
-    constructor(name, id, email, role,gitHub) {
-        super(name, id, email,role,);
+    constructor(name, id, email, gitHub) {
+        super(name, id, email);
         this.gitHub = gitHub;
+    }
+    getGitHub () {
+        return this.gitHub
+    }
+    getRole () {
+        return "Engineer"
     }
 }
 
 
 class Intern extends Employee {
-    constructor (name, id, email, role, school){
-        super(name, id, email,role,);
+    constructor (name, id, email, school){
+        super(name, id, email);
         this.school = school;
+    }
+    getSchool () {
+        return this.school
+    }
+    getRole () {
+        return "Intern"
     }
 }
 
-module.exports = Employee;
-module.exports = Manager;
-module.exports = Engineer;
-module.exports = Intern;
+module.exports = {Manager,Engineer,Intern}
