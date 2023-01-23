@@ -1,6 +1,6 @@
-const Employee = require('../lib/Manager.js');
+const Manager = require('../lib/Manager.js');
  
-test ("Can instantiate Employee instance", () => {
+test ("Can instantiate Manager instance", () => {
     const e = new Manager();
     expect(typeof e).toEqual("object")
 });

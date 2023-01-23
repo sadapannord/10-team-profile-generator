@@ -1,6 +1,6 @@
-const Employee = require('../lib/Intern.js');
+const Intern = require('../lib/Intern.js');
  
-test ("Can instantiate Employee instance", () => {
+test ("Can instantiate Intern instance", () => {
     const e = new Intern();
     expect(typeof e).toEqual("object")
 });
