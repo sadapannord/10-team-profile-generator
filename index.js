@@ -6,7 +6,7 @@ const generateHTML = (allEmployees) => {
         let employee = allEmployees[i]
         console.log(employee)
         if (employee.getRole() === "Manager") {
-        employeeHtml += `<div class="container center-align col l3"><li id="Manager" class = "pink lighten-4">${employee.name} 
+        employeeHtml += `<div class="container card center-align col l3"><li id="Manager" class = "pink lighten-4">${employee.name} 
         <li>Role: Manager</li>
         <li>ID: ${employee.id}</li>
         <li>Email: <a href="mailto: ${employee.email}">${employee.email}</a></li>
@@ -14,15 +14,15 @@ const generateHTML = (allEmployees) => {
     </li></div>`
         }
         else if (employee.getRole() === "Engineer") {
-        employeeHtml += `<div class="container center-align col l3"><li class = "Engineer pink lighten-4">${employee.name}
+        employeeHtml += `<div class="container card center-align col l3"><li class = "Engineer pink lighten-4">${employee.name}
         <li>Role: Engineer</li>
         <li>ID: ${employee.id}</li>
         <li>Email: <a href="mailto: ${employee.email}">${employee.email}</a></li>
-        <li>GitHub: <a href="${employee.gitHub}>${employee.gitHub}</a></li>
+        <li>GitHub: <a href="${employee.gitHub}">${employee.gitHub}</a></li>
     </li></div>`
         }
         else if (employee.getRole() === "Intern") {
-        employeeHtml += `<div class="container center-align col l3"><li class = "Intern pink lighten-4">${employee.name}
+        employeeHtml += `<div class="container card center-align col l3"><li class = "Intern pink lighten-4">${employee.name}
         <li>Role: Intern</li>
             <li>ID: ${employee.id}</li>
             <li>Email: <a href="mailto: ${employee.email}">${employee.email}</a></li>
@@ -47,7 +47,7 @@ const generateHTML = (allEmployees) => {
           <h1 class="display-4 center-align">My Team</h1>
         </div>
       </header>
-      <ul class="employees row">
+      <ul class="container employees row">
         ${employeeHtml}
       </ul>
     </body>
