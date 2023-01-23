@@ -90,7 +90,8 @@ function getEmployees() {
     inquirer.prompt(questions).then((answers => {
         let manager = new Manager (answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber)
         allEmployees.push(manager)
-        if (!answers.moreEmployees) {
+        if (answers.moreEmployees === "No") {
+            fs.writeFileSync('./output/index.html', index(allEmployees))
             return answers;
         } else {
             return getMoreEmployees()

@@ -9,7 +9,7 @@ const generateHTML = (allEmployees) => {
         employeeHtml += `<div class="container center-align col l3"><li id="Manager" class = "pink lighten-4">${employee.name} 
         <li>Role: Manager</li>
         <li>ID: ${employee.id}</li>
-        <li>Email: ${employee.email}</li>
+        <li>Email: <a href="mailto: ${employee.email}">${employee.email}</a></li>
         <li>Office Number: ${employee.officeNumber}</li>
     </li></div>`
         }
@@ -17,15 +17,15 @@ const generateHTML = (allEmployees) => {
         employeeHtml += `<div class="container center-align col l3"><li class = "Engineer pink lighten-4">${employee.name}
         <li>Role: Engineer</li>
         <li>ID: ${employee.id}</li>
-        <li>Email: ${employee.email}</li>
-        <li>GitHub: ${employee.gitHub}</li>
+        <li>Email: <a href="mailto: ${employee.email}">${employee.email}</a></li>
+        <li>GitHub: <a href="${employee.gitHub}>${employee.gitHub}</a></li>
     </li></div>`
         }
         else if (employee.getRole() === "Intern") {
         employeeHtml += `<div class="container center-align col l3"><li class = "Intern pink lighten-4">${employee.name}
         <li>Role: Intern</li>
             <li>ID: ${employee.id}</li>
-            <li>Email: ${employee.email}</li>
+            <li>Email: <a href="mailto: ${employee.email}">${employee.email}</a></li>
             <li>School: ${employee.school}</li>
         </li></div>`
         }
